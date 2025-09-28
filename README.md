@@ -1,6 +1,6 @@
-![Project Banner](./banner.png)
+![Project Banner](./Banner.png)
 <p align="center">
-  <img src="./banner.png" alt="Predictive Maintenance in Oil & Gas" width="100%">
+  <img src="./Banner.png" alt="Predictive Maintenance in Oil & Gas" width="100%">
 </p>
 # Predictive Maintenance (RUL) | Oil & Gas Rotating Equipment | Python, LSTM, XGBoost
 
