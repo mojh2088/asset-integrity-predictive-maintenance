@@ -1,4 +1,3 @@
-![Project Banner](./Banner.png)
 <p align="center">
   <img src="./Banner.png" alt="Predictive Maintenance in Oil & Gas" width="100%">
 </p>
