@@ -1,3 +1,7 @@
+![Project Banner](./banner.png)
+<p align="center">
+  <img src="./banner.png" alt="Predictive Maintenance in Oil & Gas" width="100%">
+</p>
 # Predictive Maintenance (RUL) | Oil & Gas Rotating Equipment | Python, LSTM, XGBoost
 
 ## 📌 Executive Summary
