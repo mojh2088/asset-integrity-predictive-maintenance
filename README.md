@@ -1,7 +1,7 @@
 <p align="center">
   <img src="./Banner.png" alt="Predictive Maintenance in Oil & Gas" width="100%">
 </p>
-# Predictive Maintenance (RUL) | Oil & Gas Rotating Equipment | Python, LSTM, XGBoost
+**## Predictive Maintenance (RUL) | Oil & Gas Rotating Equipment | Python, LSTM, XGBoost**
 
 ## 📌 Executive Summary
 - Unplanned equipment failures in oil & gas (pumps, compressors, motors) cause costly downtime.  
