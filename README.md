@@ -2,86 +2,229 @@
   <img src="./Banner.png" alt="Predictive Maintenance in Oil & Gas" width="100%">
 </p>
 
-## Predictive Maintenance (RUL) | Oil & Gas Rotating Equipment | Python, LSTM, XGBoost**
 
-## 📌 Executive Summary
-- Unplanned equipment failures in oil & gas (pumps, compressors, motors) cause costly downtime.  
-- This project applies **machine learning** to predict Remaining Useful Life (RUL) using sensor data.  
-- Business goal: enable predictive maintenance to **reduce downtime, improve reliability, and cut costs**.
+# 🔧 **AI-Driven Predictive Maintenance for Oil & Gas | Remaining Useful Life (RUL) Estimation**
 
----
+A full end-to-end **machine learning system** for predicting Remaining Useful Life (RUL) in rotating equipment used in the **oil & gas industry**.  
+This project features:
 
-## 🎯 Business Problem
-Asset integrity is critical in oil & gas operations.  
-Traditional maintenance = reactive (fix after failure) or scheduled (fixed intervals). Both approaches risk:  
-- High downtime costs  
-- Wasted resources  
-- Safety/environmental risks  
-
-**Goal:** Predict failures *before they happen* → plan maintenance windows proactively.
+✔️ Feature-engineered turbomachinery sensor dataset  
+✔️ XGBoost & Neural Network regression models  
+✔️ Ensemble RUL prediction  
+✔️ Production-ready **FastAPI inference server**  
+✔️ **Streamlit UI** for business-friendly visualization  
+✔️ Clean modular project structure suitable for real deployment
 
 ---
 
-## 📊 Dataset
-- **Source:** NASA C-MAPSS Turbofan Engine Degradation Dataset  
-- **Mapping to oil & gas:**  
-  - Engines → rotating equipment (pumps/compressors)  
-  - Sensor readings → vibration, temperature, pressure  
-  - Cycles → operating hours/run-time  
+# 📘 **1. Executive Summary**
 
-[🔗 Dataset link](https://www.kaggle.com/datasets)
+Rotating equipment failures (pumps, compressors, turbines) are a major source of unplanned downtime in the energy sector.  
+Traditional maintenance strategies—reactive or fixed-interval—often lead to:
 
----
+- Costly shutdowns  
+- Equipment over-maintenance  
+- Safety and environmental risks
 
-## 🔧 Methodology
-1. **Data Preparation**  
-   - Cleaned and preprocessed time-series sensor data  
-   - Feature engineering (rolling averages, degradation trends)  
+This project provides an **AI-powered predictive maintenance solution** that estimates RUL from vibration, thermal, acoustic, and derived sensor indicators.
 
-2. **Exploratory Data Analysis (EDA)**  
-   - Identified patterns leading up to failure  
-   - Correlation analysis between sensors & RUL  
-
-3. **Modeling**  
-   - Baseline: Linear Regression, Random Forest, XGBoost  
-   - Advanced: LSTM for sequence/time-series modeling  
-
-4. **Evaluation**  
-   - Metrics: RMSE, MAE for RUL prediction  
-   - Business interpretation: translate predictions into maintenance windows  
+📌 **Business Value**  
+- Reduce unplanned downtime  
+- Improve maintenance planning  
+- Optimize asset integrity & operational efficiency  
+- Enable data-driven reliability engineering
 
 ---
 
-## 📈 Results
-- [Placeholder for accuracy scores and performance]  
-- [Visualization: predicted RUL vs actual]  
-- [Business impact estimate: downtime reduction, savings potential]  
+# 📂 **2. Project Architecture**
+
+```
+asset-integrity-predictive-maintenance/
+│
+├── data/                      → Raw dataset (NASA C-MAPSS)
+├── notebooks/
+│   ├── EDA.ipynb              → Full exploratory analysis
+│   └── models/                → Saved ML models & scalers
+│
+├── models/                    → API-ready models & scalers
+│   ├── xgb_model.pkl
+│   ├── neural_network_rul.keras
+│   ├── rul_scaler.pkl
+│   ├── feature_names.json
+│   └── minmax_scaler.pkl
+│
+├── scripts/
+│   └── streamlit_app.py       → Frontend UI
+│
+├── rul_api.py                 → FastAPI backend
+├── README.md                  → Project documentation
+└── Banner.png                 → Repo header graphic
+```
 
 ---
 
-## 💡 Recommendations
-- Implement ML-based monitoring for critical equipment  
-- Integrate predictions into maintenance planning  
-- Use dashboards to guide operational decisions  
+# 🧠 **3. Machine Learning Workflow**
+
+### **3.1 Data Processing**
+- Missing-value handling  
+- Scaling & normalization  
+- Rolling statistics (mean, std)  
+- Trend-based degradation features  
+
+### **3.2 Modeling**
+| Model | Description |
+|-------|-------------|
+| **XGBoost Regressor** | High-performance baseline model |
+| **Deep Neural Network (.keras)** | Learns complex non-linear degradation patterns |
+| **Ensemble (Average)** | Improves robustness & reduces variance |
+
+### **3.3 Evaluation Metrics**
+- MAE (Mean Absolute Error)  
+- RMSE (Root Mean Squared Error)  
+
+> The ensemble model delivered the most stable predictions across failure cycles.
 
 ---
 
-## 🚀 Next Steps
-- Expand dataset to include real plant-level sensor data  
-- Test additional models (GRU, Transformers)  
-- Build full Streamlit dashboard for real-time predictions  
+# 🚀 **4. Production-Ready Inference API (FastAPI)**
+
+The backend provides programmatic RUL predictions for any input sensor vector.
+
+### Run the API  
+```bash
+uvicorn rul_api:app --reload
+```
+
+### API Documentation  
+Open your browser:  
+👉 **http://127.0.0.1:8000/docs**
+
+You’ll see:
+- Interactive Swagger UI  
+- POST `/predict_rul` that returns:  
+```json
+{
+  "xgb_rul": 133.83,
+  "nn_rul": 127.55,
+  "ensemble_rul": 130.69
+}
+```
 
 ---
 
-## 🛠️ Tools & Skills
-- **Languages/Frameworks:** Python, pandas, scikit-learn, TensorFlow/PyTorch  
-- **Visualization:** matplotlib, seaborn, Streamlit  
-- **Other:** GitHub, Kaggle API, Jupyter Notebook  
+# 🖥️ **5. User Interface (Streamlit)**
+
+A clean, interactive dashboard for non-technical users (engineers, reliability managers).
+
+### Launch Streamlit UI  
+```bash
+streamlit run scripts/streamlit_app.py
+```
+
+### Features:
+- Sidebar with 153 sensor inputs  
+- API request status & prediction visualization  
+- XGBoost, Neural Net, and Ensemble comparison  
+- Expandable raw JSON outputs  
+
+Perfect for **presentations, interviews, and industrial demos**.
 
 ---
 
-## 👤 Author
+# 📊 **6. Dataset**
+
+- **Source:** NASA C-MAPSS Turbofan Degradation dataset  
+- **Adapted for oil & gas:**  
+  Turbofan sensors mapped to rotating equipment (pumps, compressors)
+
+| Category | Examples |
+|----------|----------|
+| Operational settings | Temperature, pressure, fuel flow |
+| Sensor channels | Vibration, acoustic, torque, thermal readings |
+| Engine cycles | Operating hours (proxy for degradation) |
+
+---
+
+# 📈 **7. Results Summary**
+
+### Key Insights:
+- Rolling statistics improved signal clarity  
+- XGBoost captured failure curves effectively  
+- Neural network captured non-linear wear patterns  
+- Ensemble delivered the most **stable** predictions across test samples
+
+📌 *This mirrors real-world predictive maintenance systems where ensemble models outperform single estimators.*
+
+---
+
+# 🛠️ **8. Tech Stack**
+
+### **Languages & ML Tools**
+- Python, NumPy, pandas  
+- scikit-learn  
+- XGBoost  
+- TensorFlow / Keras  
+
+### **APIs & Deployment**
+- FastAPI  
+- Uvicorn  
+- Streamlit  
+
+### **Environment & MLOps**
+- Conda / virtual environments  
+- Git & GitHub  
+- Jupyter Notebooks  
+
+---
+
+# 🌍 **9. How to Reproduce**
+
+### 1️⃣ Clone Repo  
+```bash
+git clone https://github.com/<your-username>/asset-integrity-predictive-maintenance.git
+cd asset-integrity-predictive-maintenance
+```
+
+### 2️⃣ Create Environment  
+```bash
+conda create -n tfenv python=3.11
+conda activate tfenv
+pip install -r requirements.txt
+```
+
+### 3️⃣ Run Backend  
+```
+uvicorn rul_api:app --reload
+```
+
+### 4️⃣ Run Frontend  
+```
+streamlit run scripts/streamlit_app.py
+```
+
+---
+
+# 🏭 **10. Industrial Applications**
+
+This system can be deployed across:
+
+- Oil & gas rotating machinery  
+- Petrochemical pumps & compressors  
+- Refinery turbomachinery  
+- Offshore platform maintenance  
+- LNG plant reliability systems  
+
+---
+
+# 👤 **Author**
+
 **Mohamed Jamaludeen Hussain**  
-Graduate Student in Data Analytics | 15+ Years Oil & Gas Leadership | Aspiring Data Scientist  
+Data Analytics Graduate Student | Asset Integrity Specialist | Oil & Gas Professional  
 
-[LinkedIn Profile](#www.linkedin.com/in/mohamed-jamaludeen-hussain-9289a8a1) | [Email](# mojh2088@gmail.com)
+📌 *Bridging 15+ years of industrial experience with machine learning innovation.*  
+📧 mojh2088@gmail.com  
+🔗 LinkedIn: https://www.linkedin.com/in/mohamed-jamaludeen-hussain-9289a8a1  
+
+---
+
+# ⭐ **If you found this project valuable, please star the repository!**
