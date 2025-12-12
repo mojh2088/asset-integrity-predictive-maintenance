@@ -223,7 +223,9 @@ Data Analytics Graduate Student | Asset Integrity Specialist | Oil & Gas Profess
 
 📌 *Bridging 15+ years of industrial experience with machine learning innovation.*  
 📧 mojh2088@gmail.com  
-🔗 LinkedIn: https://www.linkedin.com/in/mohamed-jamaludeen-hussain-9289a8a1  
+🔗 **LinkedIn:**  
+https://www.linkedin.com/in/mohamed-jamaludeen-hussain-shaik-munavar-hussain-9289a8a1/
+
 
 ---
 
