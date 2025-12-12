@@ -41,24 +41,36 @@ This project provides an **AI-powered predictive maintenance solution** that est
 ```
 asset-integrity-predictive-maintenance/
 │
-├── data/                      → Raw dataset (NASA C-MAPSS)
-├── notebooks/
-│   ├── EDA.ipynb              → Full exploratory analysis
-│   └── models/                → Saved ML models & scalers
+├── data/                          → Raw NASA C-MAPSS dataset (not committed)
+│   ├── train_FD001.txt
+│   ├── test_FD001.txt
+│   └── RUL_FD001.txt
 │
-├── models/                    → API-ready models & scalers
+├── notebooks/
+│   ├── EDA_clean.ipynb            → Exploratory data analysis
+│   └── Modeling_clean_fixed.ipynb → Feature engineering & model training
+│
+├── models/                        → API-ready models & inference artifacts
 │   ├── xgb_model.pkl
 │   ├── neural_network_rul.keras
-│   ├── rul_scaler.pkl
-│   ├── feature_names.json
-│   └── minmax_scaler.pkl
+│   ├── linear_regression.pkl
+│   ├── minmax_scaler.pkl
+│   └── feature_names.json
 │
 ├── scripts/
-│   └── streamlit_app.py       → Frontend UI
+│   ├── train_xgboost.py           → XGBoost training pipeline
+│   ├── train_lstm.py              → LSTM model training
+│   └── utils.py                   → Shared preprocessing utilities
 │
-├── rul_api.py                 → FastAPI backend
-├── README.md                  → Project documentation
-└── Banner.png                 → Repo header graphic
+├── Streamlit_app/
+│   └── app.py                     → Streamlit frontend UI
+│
+├── rul_api.py                     → FastAPI inference backend
+├── README.md                      → Project documentation
+├── requirements.txt               → Python dependencies
+├── .gitignore
+└── Banner.png                     → Repository header graphic
+
 ```
 
 ---
@@ -118,7 +130,7 @@ A clean, interactive dashboard for non-technical users (engineers, reliability m
 
 ### Launch Streamlit UI  
 ```bash
-streamlit run scripts/streamlit_app.py
+streamlit run Streamlit_app/app.py
 ```
 
 ### Features:
